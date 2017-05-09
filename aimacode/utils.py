@@ -419,6 +419,9 @@ class Expr(object):
                 and self.op == other.op
                 and self.args == other.args)
 
+    def __lt__(self, other):
+        return self.__repr__() < other.__repr__()
+
     def __hash__(self):
         self.__hash = self.__hash or hash(self.op) ^ hash(self.args)
         return self.__hash

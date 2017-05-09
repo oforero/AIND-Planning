@@ -143,6 +143,7 @@ def tree_search(problem, frontier):
         if problem.goal_test(node.state):
             return node
         frontier.extend(node.expand(problem))
+
     return None
 
 
@@ -180,6 +181,8 @@ def depth_first_graph_search(problem):
 
 def breadth_first_search(problem):
     "[Figure 3.11]"
+    print("Start search:")
+    problem.print(problem.initial)
     node = Node(problem.initial)
     if problem.goal_test(node.state):
         return node
@@ -194,6 +197,9 @@ def breadth_first_search(problem):
                 if problem.goal_test(child.state):
                     return child
                 frontier.append(child)
+            #if child.state in explored or child in frontier:
+                #print("Rejected: ", child.state in explored, child.state in frontier, child.state)
+                #problem.print(child.state)
     return None
 
 
